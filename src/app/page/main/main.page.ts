@@ -18,7 +18,8 @@ uid: string;
 
 
   constructor(public af: AngularFireAuth, public fs: AngularFirestore) {
-    this.uid = localStorage.getItem('userid');
+    // this.uid = localStorage.getItem('userid');
+    this.uid=this.af.auth.currentUser.uid;
     this.chatRef = this.fs.collection('chat',ref=>ref.orderBy('Timestamp')).valueChanges();
   console.log(this.uid)
   }

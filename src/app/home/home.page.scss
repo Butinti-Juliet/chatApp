@@ -1,18 +1,21 @@
-.center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 180%;
-}
-
 ion-item {
     text-align: center;
 }
 
 .reg {
     text-align: center;
+    width: 120px;
+    height: 120px;
+    margin: 20px auto 8px;
+    border-radius: 10%;
+    background: url("/assets/logs.jpg") no-repeat;
+    background-size: 100%;
 }
 
-.no-margin {
-    height: 100%;
+.center {
+    text-align: center;
+}
+
+.background-image {
+    --background: url("images.jpg") 0 0/100% 100% no-repeat;
 }

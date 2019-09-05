@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
 
 
 
@@ -12,7 +14,7 @@ export class AuthService {
 
   
 
-  constructor() { }
+  constructor(private httpClient: HttpClient,private storage: Storage) { }
 
   
   // const avatarURL = "http://127.0.0.1:3000/uploads/avatar.png";
