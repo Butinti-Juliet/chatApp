@@ -1,0 +1,74 @@
+<ion-header>
+    <ion-toolbar color="dark">
+        <ion-title>Sign Up</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content no-padding>
+    <div class="main">
+        <ion-card no-margin>
+            <ion-card-content>
+                <ion-row class="row">
+                    <div class="reg">
+                        <img src="assets/reg.jpg" class="center">
+                    </div>
+                </ion-row>
+                <br>
+
+                <ion-item>
+                    <ion-label position='floating'>
+                        Username
+                    </ion-label>
+                    <ion-input type="text" [(ngModel)]="username" class="input" padding-horizontal clear-input="true"></ion-input>
+                </ion-item>
+                <!-- <ion-row>
+                <ion-col>
+                    <ion-input type="text" placeholder="Age" [(ngModel)]="user.age" class="input" padding-horizontal clear-input="true"></ion-input>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+
+                    <ion-select placeholder="Gender" [(ngModel)]="user.gender" type="text" class="input" padding-horizontal clear-input="true">
+                        <ion-select-option value="female">Female</ion-select-option>
+                        <ion-select-option value="male">Male</ion-select-option>
+                    </ion-select>
+
+                </ion-col>
+            </ion-row> -->
+                <ion-item>
+                    <ion-label position='floating'>
+                        Email
+                    </ion-label>
+                    <ion-input type="email" [(ngModel)]="email" padding-horizontal clear-input="true"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label position='floating'>
+                        Password
+                    </ion-label>
+                    <ion-input type="password" [(ngModel)]="pwd" class="input" padding-horizontal clear-input="true"></ion-input>
+                </ion-item>
+                <br>
+
+                <ion-row>
+                    <ion-col>
+                        <ion-button expand="block" (click)="signup()" color="dark">SignUp</ion-button>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-text class="error" text-center>{{error}}</ion-text>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-text text-center class="block">Already have an account ?
+                            <span class="bold" routerLink="/home">Login here</span></ion-text>
+                    </ion-col>
+                </ion-row>
+            </ion-card-content>
+        </ion-card>
+    </div>
+</ion-content>

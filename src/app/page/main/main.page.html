@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-toolbar color="dark">
+        <ion-title>
+            Chat Room
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="ce">
+        <div class="chat" *ngFor="let chat of chatRef | async">
+
+            <div class="me" *ngIf="uid==chat.UserID">
+                {{chat.Message}}
+            </div>
+
+            <div class="you" *ngIf="uid != chat.UserID">
+                <span class="name">
+      {{chat.Name}}
+    </span><br> {{chat.Message}}
+            </div>
+        </div>
+    </div>
+</ion-content>
+<ion-footer color="dark">
+    <ion-item>
+        <ion-input placeholder="Type Message....." [(ngModel)]="text"></ion-input>
+        <ion-button (click)="send()" fill="clear" icon-only slot="end">
+            <ion-icon name="send"></ion-icon>
+        </ion-button>
+
+
+
+    </ion-item>
+
+
+
+</ion-footer>

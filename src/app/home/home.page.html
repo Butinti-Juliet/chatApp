@@ -1,0 +1,43 @@
+<ion-header>
+    <ion-toolbar color="dark">
+        <ion-title>Chat Login</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <div class="main">
+        <ion-card no-margin>
+            <ion-card-content>
+                <ion-row class="row">
+                    <div class="reg">
+                        <img src="assets/log.jpg" class="center">
+                    </div>
+                </ion-row>
+                <ion-item>
+                    <ion-label position='floating'>
+                        Email
+                    </ion-label>
+                    <ion-input type="email" [(ngModel)]="email" class="input" padding-horizontal clear-input="true"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label position='floating'>
+                        Password
+                    </ion-label>
+                    <ion-input type="password" [(ngModel)]="password" class="input" padding-horizontal clear-input="true"></ion-input>
+                </ion-item>
+                <br>
+
+                <div text-center>
+                    <ion-button expand="block" color="dark" (click)="login()">Login</ion-button>
+                </div>
+                <br><br><br>
+                <div text-center>
+                    <b>or</b>
+                    <br>
+                    <ion-button expand="block" color="dark" (click)="signUp()" fill="clear">signUp</ion-button>
+                </div>
+            </ion-card-content>
+        </ion-card>
+    </div>
+</ion-content>
