@@ -14,6 +14,11 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { TabsPage } from './page/tabs/tabs.page';
 import { HttpClientModule } from '@angular/common/http';
 
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
+
+
+
 
 
 
@@ -23,7 +28,7 @@ const firebaseConfig = {
   authDomain: "chat-e5862.firebaseapp.com",
   databaseURL: "https://chat-e5862.firebaseio.com",
   projectId: "chat-e5862",
-  storageBucket: "",
+  storageBucket: "chat-e5862.appspot.com",
   messagingSenderId: "93841602381",
   appId: "1:93841602381:web:d92d111b15947a6d"
 };
@@ -32,7 +37,7 @@ const firebaseConfig = {
   declarations: [AppComponent,TabsPage],
   entryComponents: [],
 
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, AngularFireAuthModule, AngularFirestoreModule ,AngularFireModule.initializeApp(firebaseConfig) ],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,  HttpClientModule,  AngularFireStorageModule, AngularFireAuthModule, AngularFirestoreModule ,AngularFireModule.initializeApp(firebaseConfig) ],
   providers: [
     StatusBar,
     SplashScreen,

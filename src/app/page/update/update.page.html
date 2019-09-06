@@ -1,0 +1,72 @@
+<ion-header>
+    <ion-toolbar color="dark">
+        <ion-title>Update Your Profile</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <!-- <ion-item>
+
+        <ion-label>Name:</ion-label>
+        <ion-input type="text" [(ngModel)]="User.name"></ion-input>
+
+    </ion-item>
+    <ion-item>
+        <ion-label>Username: </ion-label>
+        <ion-input type="text" [(ngModel)]="User.username"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Gender: </ion-label>
+        <ion-input type="text" [(ngModel)]="User.gender"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label>Age: </ion-label>
+        <ion-input type="text" [(ngModel)]="User.age"></ion-input>
+    </ion-item> -->
+
+    <ion-item>
+        <ion-label position="fixed">Username</ion-label>
+        <ion-input type="string" placeholder="Enter new" [(ngModel)]="User.name"></ion-input>
+
+
+    </ion-item>
+
+    <ion-item>
+        <ion-label position="fixed">Age</ion-label>
+        <ion-input type="text" placeholder="Enter new" [(ngModel)]="User.age"></ion-input>
+
+
+    </ion-item>
+
+    <ion-item>
+
+        <ion-label position="fixed">Gender</ion-label>
+        <ion-input type="string" placeholder="Enter new" [(ngModel)]="User.gender"></ion-input>
+
+
+
+    </ion-item>
+
+
+    <ion-row>
+        <ion-col>
+            <ion-text class="error" text-center>{{error}}</ion-text>
+        </ion-col>
+    </ion-row>
+
+
+    <ion-row>
+        <ion-col>
+            <ion-text class="error" text-center>{{linkError}}</ion-text>
+        </ion-col>
+    </ion-row>
+
+    <ion-button color="primary" expand="block" color="dark" (click)="onEdit(User, User.key)">Update</ion-button>
+
+
+    <br><br> {{User.name}}
+    <br>
+
+</ion-content>

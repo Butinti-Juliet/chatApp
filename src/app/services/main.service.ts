@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { NavController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +9,9 @@ export class MainService {
   isLoggedIn(): boolean {
     throw new Error("Method not implemented.");
   }
-  nav: any;
+ 
 
-  constructor(private afAuth: AngularFireAuth) { 
+  constructor(private afAuth: AngularFireAuth, private nav: NavController) { 
 
     afAuth.auth.onAuthStateChanged((user)=>{
       if(user){

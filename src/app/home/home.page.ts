@@ -26,4 +26,13 @@ export class HomePage {
    signUp(){
      this.nav.navigateForward('signup');
    }
+
+   anonymous() {
+    this.af.auth.signInAnonymously().then(() => {
+      localStorage.setItem('userid', this.af.auth.currentUser.uid);
+      this.nav.navigateRoot('/tabs');
+    }).catch(err => {
+      alert(err.message);
+    });
+   }
 }

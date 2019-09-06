@@ -14,7 +14,8 @@ const routes: Routes = [
   { path: 'tabs', component: TabsPage, children:[
     { path: 'main', loadChildren: './page/main/main.module#MainPageModule'},
     { path: 'profile', loadChildren: './page/profile/profile.module#ProfilePageModule' }
-  ] }
+  ] },
+  { path: 'update', loadChildren: './page/update/update.module#UpdatePageModule' }
 ];
 
 @NgModule({

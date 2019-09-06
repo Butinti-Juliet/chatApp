@@ -1,7 +1,10 @@
-import { Component} from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
-
+import { Component, OnInit } from '@angular/core';
+import {finalize} from 'rxjs/operators';
+import {  AngularFireStorage } from '@angular/fire/storage';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 
 @Component({
@@ -9,41 +12,69 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
 })
-export class ProfilePage {
+export class ProfilePage implements OnInit {
 
-  SERVER_URL = 'http://localhost:3000/avatar';
-  fileToUpload: File = null;
-  userId = null;
-  avatarURL;
- 
-
-  constructor(private httpClient: HttpClient, private storage: Storage) {
-  }
- 
- 
-  async ngOnInit() {
-    this.userId =  await this.storage.get("USER_ID");
-  } 
-
-  attachFile(e){
-    if (e.target.files.length == 0) {
-      console.log("No file selected!");
-      return
-    }
-    let file: File = e.target.files[0];
-    this.fileToUpload = file;
+  User = {
+    name: " ",
+    username: " ",
+    gender: " "
   }
 
-  uploadAvatar(f){
-    let formData = new FormData(); 
-    formData.append('file', this.fileToUpload, this.fileToUpload.name); 
-    formData.append('userId', this.userId);
-    this.httpClient.post(this.SERVER_URL, formData).subscribe((res) => {
+  userList;
 
-    console.log(res);
-    this.avatarURL = res['avatarURL'];
-    });
-    return false;     
-  }
- 
+ ref;
+ task: any;
+ uploadState: any;
+ uploadProgress: any;
+ downloadURL: any;
+
+
+id;
+name;
+url
+user: AngularFirestoreDocument;
+sub;
+photoURL:any;
+
+ constructor(public Storage: AngularFireStorage , private  af: AngularFireAuth, private afs :AngularFirestore, private router: Router,private userServ: UserService) {
+   
+   this.af.auth.currentUser.photoURL;
+   this.name=af.auth.currentUser.displayName;
+   this.user=afs.doc(`users/${this.af.auth.currentUser.uid}`)
+   this.sub=this.user.valueChanges().subscribe(event=>{
+   this.photoURL = event.photoURL
+   })
+ }
+ ngOnInit() {
+  const key = this.af.auth.currentUser.uid;
+ }
+
+
+
+ onEdit(userList){
+  this.router.navigate(['/update-profile'], {queryParams:{name: userList.name, username: userList.username, gender: userList.gender}})
+}
+
+
+ upload(event) {
+   const file= event.target.files[0];
+    this.id = Math.random().toString(36).substring(2);
+   const filepath=this.id;
+   this.ref = this.Storage.ref(filepath);
+   const task = this.Storage.upload(filepath, file);
+   this.uploadState = task.percentageChanges();
+   task.snapshotChanges().pipe(
+     finalize(() => {
+       this.downloadURL = this.ref.getDownloadURL().subscribe(url=>{
+         console.log(url);
+         this.af.auth.currentUser.updateProfile({
+           photoURL: url
+         })
+         this.user.update({
+           photoURL: url
+         })
+       })
+     })
+   ).subscribe();
+ }
 }

@@ -1,10 +1,11 @@
 <ion-header>
     <ion-toolbar color="dark">
+        <ion-icon name="arrow-back" [routerLink]="['/home']"></ion-icon>
         <ion-title>Chat App</ion-title>
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="background-image">
     <ion-tabs>
         <ion-tab-bar slot="bottom" color="medium">
             <ion-tab-button tab1="main" routerLink="/main">
