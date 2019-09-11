@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
+import { User } from '../module/user';
 
 
 @Injectable({
@@ -19,10 +20,11 @@ export class UserService {
     return this.userDoc.valueChanges();
   }
 
-  update(User, key)
+  update2(User, key)
   {
      this.angularfire.doc<User>('users/'+key);
     this.userDoc.update(User);
+   
   }
 
 

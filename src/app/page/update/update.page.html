@@ -1,34 +1,17 @@
 <ion-header>
     <ion-toolbar color="dark">
+        <ion-icon name="arrow-back" [routerLink]="['/Profile']"></ion-icon>
         <ion-title>Update Your Profile</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-    <!-- <ion-item>
-
-        <ion-label>Name:</ion-label>
-        <ion-input type="text" [(ngModel)]="User.name"></ion-input>
-
-    </ion-item>
-    <ion-item>
-        <ion-label>Username: </ion-label>
-        <ion-input type="text" [(ngModel)]="User.username"></ion-input>
-    </ion-item>
-
-    <ion-item>
-        <ion-label>Gender: </ion-label>
-        <ion-input type="text" [(ngModel)]="User.gender"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label>Age: </ion-label>
-        <ion-input type="text" [(ngModel)]="User.age"></ion-input>
-    </ion-item> -->
+    <div *ngIf="joke">{{ joke.value }}</div>
 
     <ion-item>
         <ion-label position="fixed">Username</ion-label>
-        <ion-input type="string" placeholder="Enter new" [(ngModel)]="User.name"></ion-input>
+        <ion-input type="string" placeholder="Enter new" [(ngModel)]="User.displayName"></ion-input>
 
 
     </ion-item>
@@ -63,10 +46,13 @@
         </ion-col>
     </ion-row>
 
-    <ion-button color="primary" expand="block" color="dark" (click)="onEdit(User, User.key)">Update</ion-button>
+    <ion-button color="primary" expand="block" color="dark" (click)="update2(User)">Update</ion-button>
 
+    <!-- <ion-button (click)="updateItem(item, item.key)" [routerLink]="['/home']">Update</ion-button> -->
 
-    <br><br> {{User.name}}
-    <br>
+    <br><br>{{User.displayName}}
+    <br> {{User.age}}
+    <br> {{User.gender}}
+
 
 </ion-content>

@@ -34,6 +34,7 @@ if(this.text != ''){
     Message: this.text,
     UserID: this.af.auth.currentUser.uid,
     Timestamp:firebase.firestore.FieldValue.serverTimestamp(),
+    // Timestamp : Date.now(),
   });
   this.text='';
 }

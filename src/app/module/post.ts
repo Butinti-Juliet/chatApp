@@ -1,0 +1,3 @@
+class Post{
+    timestamp: Date;
+}

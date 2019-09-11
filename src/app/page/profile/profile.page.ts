@@ -13,13 +13,15 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-
+// 
   User = {
     name: " ",
     username: " ",
-    gender: " "
+    displayName: " ",
+    gender: " ",
+    age: " "
   }
-
+  post = {} as Post;
   userList;
 
  ref;
@@ -31,18 +33,31 @@ export class ProfilePage implements OnInit {
 
 id;
 name;
+
+
 url
 user: AngularFirestoreDocument;
 sub;
 photoURL:any;
+  
+ 
 
  constructor(public Storage: AngularFireStorage , private  af: AngularFireAuth, private afs :AngularFirestore, private router: Router,private userServ: UserService) {
    
    this.af.auth.currentUser.photoURL;
    this.name=af.auth.currentUser.displayName;
+  
    this.user=afs.doc(`users/${this.af.auth.currentUser.uid}`)
    this.sub=this.user.valueChanges().subscribe(event=>{
    this.photoURL = event.photoURL
+   })
+
+//
+   const key = this.af.auth.currentUser.uid;
+    
+   this.userServ.getUser(key).subscribe( data =>{
+     this.userList = data;
+     console.log(data)
    })
  }
  ngOnInit() {
@@ -50,9 +65,19 @@ photoURL:any;
  }
 
 
+//
+
+// name: userList.name, username: userList.username,
 
  onEdit(userList){
-  this.router.navigate(['/update-profile'], {queryParams:{name: userList.name, username: userList.username, gender: userList.gender}})
+  this.router.navigate(['/update'], {queryParams:{ gender: userList.gender, displayName: userList.displayName, age: userList.age}})
+}
+Onpost(post:Post){
+
+  const key = this.af.auth.currentUser.uid;
+
+  return 
+  
 }
 
 

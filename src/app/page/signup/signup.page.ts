@@ -5,6 +5,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import *as  firestore from "firebase";
 
 
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.page.html',
@@ -16,6 +17,8 @@ export class SignupPage implements OnInit {
   email:string;
   pwd:string;
   username:string;
+  age:string;
+  gender:string;
 
   constructor(public nav: NavController, public af: AngularFireAuth,public fs: AngularFirestore ) { }
 
@@ -28,6 +31,9 @@ signup() {
     localStorage.setItem('userid', this.af.auth.currentUser.uid);
     this.fs.collection('users').doc(this.af.auth.currentUser.uid).set({
       displayName:this.username,
+
+      age: this.age,
+      gender: this.gender,
 
       uid: this.af.auth.currentUser.uid,
       Timestamp:firestore.firestore.FieldValue.serverTimestamp(),
