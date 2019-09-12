@@ -11,6 +11,8 @@ export class UserService {
 
   private userDoc: AngularFirestoreDocument<User>;
 
+
+
   constructor(private angularfire:AngularFirestore) { }
 
   getUser(key)
@@ -20,13 +22,13 @@ export class UserService {
     return this.userDoc.valueChanges();
   }
 
-  update2(User, key)
+  update(User, key)
   {
-     this.angularfire.doc<User>('users/'+key);
+    this.userDoc = this.angularfire.doc<User>('users/'+key);
     this.userDoc.update(User);
-   
+    
+ 
+
   }
-
-
   
 }

@@ -37,7 +37,7 @@ const firebaseConfig = {
   declarations: [AppComponent,TabsPage],
   entryComponents: [],
 
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,  HttpClientModule,  AngularFireStorageModule, AngularFireAuthModule, AngularFirestoreModule ,AngularFireModule.initializeApp(firebaseConfig) ],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,  HttpClientModule,  AngularFireStorageModule, AngularFireAuthModule, AngularFirestoreModule ,AngularFireModule.initializeApp(firebaseConfig), AngularFirestoreModule.enablePersistence() ],
   providers: [
     StatusBar,
     SplashScreen,

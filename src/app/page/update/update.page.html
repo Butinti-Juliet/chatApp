@@ -7,7 +7,7 @@
 
 <ion-content>
 
-    <div *ngIf="joke">{{ joke.value }}</div>
+
 
     <ion-item>
         <ion-label position="fixed">Username</ion-label>
@@ -46,7 +46,7 @@
         </ion-col>
     </ion-row>
 
-    <ion-button color="primary" expand="block" color="dark" (click)="update2(User)">Update</ion-button>
+    <ion-button expand="block" color="dark" (click)="onEdit(User)">Update</ion-button>
 
     <!-- <ion-button (click)="updateItem(item, item.key)" [routerLink]="['/home']">Update</ion-button> -->
 

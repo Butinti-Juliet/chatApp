@@ -19,12 +19,13 @@ export class UpdatePage implements OnInit {
     username: '',
     displayName: '',
     gender:'',
-    age: ''
+    age: '',
+ 
     
   };
 
   user = {} as User;
-  private userDoc: AngularFirestoreDocument<User>;
+
 
 
   constructor(private route: ActivatedRoute, 
@@ -50,18 +51,22 @@ export class UpdatePage implements OnInit {
 
     const key = this.afAuth.auth.currentUser.uid;
 
-    this.userServ.update2(User, key);
+    this.userServ.update(User, key);
     alert('profile updated')
     this.router.navigateByUrl('profile')
   }
 
-  update2(User)
-  {
+//   onEdit2(User)
+// {
 
-    const key = this.afAuth.auth.currentUser.uid;
-     this.angularfire.doc<User>('users/'+key);
-    this.userDoc.update(User)
-   
-  }
+//   this.angularfire
+//   .collection("users")
+//   .doc(User.payload.doc.id)
+//   .set({ displayName: User.displayName }, {  });
+
+// }
+
+
+ 
 }
 
