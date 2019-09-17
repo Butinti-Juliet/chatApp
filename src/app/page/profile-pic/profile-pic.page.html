@@ -1,9 +1,27 @@
 <ion-header>
     <ion-toolbar color="dark">
-        <ion-title>profilePic</ion-title>
+        <ion-icon name="arrow-back" [routerLink]="['/tabs']"></ion-icon>
+        <ion-title>{{displayName}}</ion-title>
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="background-image">
+
+    <div class="chat" *ngFor="let chat of chatRef | async">
+        <div class="me" *ngIf="uid== chat.userid && chat.sentTo == sentto">
+            {{chat.message}}
+        </div>
+        <div class="you" *ngIf="chat.sentTo == uid && chat.userid == sentto">
+            {{chat.message}}
+        </div>
+    </div>
 
 </ion-content>
+<ion-footer>
+    <ion-item>
+        <ion-input placeholder="Type..." [(ngModel)]="text"></ion-input>
+        <ion-button (click)="send()" fill="clear" icon-only slot="end">
+            <ion-icon name="send"></ion-icon>
+        </ion-button>
+    </ion-item>
+</ion-footer>

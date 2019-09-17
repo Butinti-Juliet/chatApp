@@ -12,10 +12,12 @@ const routes: Routes = [
   // { path: 'tabs', loadChildren: './page/tabs/tabs.module#TabsPageModule' },
   { path: 'profile-pic', loadChildren: './page/profile-pic/profile-pic.module#ProfilePicPageModule' },
   { path: 'tabs', component: TabsPage, children:[
-    { path: 'main', loadChildren: './page/main/main.module#MainPageModule'},
-    { path: 'profile', loadChildren: './page/profile/profile.module#ProfilePageModule' }
+    { path: 'tabs/main', loadChildren: './page/main/main.module#MainPageModule'},
+    { path: 'tabs/profile', loadChildren: './page/profile/profile.module#ProfilePageModule' },
+    { path: 'tabs/profile-pic', loadChildren: './page/profile-pic/profile-pic.module#ProfilePicPageModule' }
   ] },
-  { path: 'update', loadChildren: './page/update/update.module#UpdatePageModule' }
+  { path: 'update', loadChildren: './page/update/update.module#UpdatePageModule' },
+  { path: 'user', loadChildren: './page/user/user.module#UserPageModule' }
 ];
 
 @NgModule({

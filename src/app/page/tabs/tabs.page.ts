@@ -10,6 +10,7 @@ export class TabsPage  {
 
 tab1: string = "MainPage";
 tab2: string = "ProfilePage";
+tab3: string = "ProfilePicPage";
 
   constructor() { }
 
