@@ -15,7 +15,7 @@ export class MainService {
 
     afAuth.auth.onAuthStateChanged((user)=>{
       if(user){
-        this.nav.navigateRoot("tabs");
+        this.nav.navigateRoot("tabs/user");
       }else{
         this.nav.navigateRoot("");
       }

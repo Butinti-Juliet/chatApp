@@ -14,7 +14,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class ProfilePicPage implements OnInit {
 
   text: string;
-  chatR: any;
+  chatRef: any;
   uid: string;
   user: any;
   sendto;
@@ -25,15 +25,15 @@ export class ProfilePicPage implements OnInit {
   constructor(private storage: AngularFireStorage,private router: Router, private af: AngularFireAuth, private firebase: AngularFirestore, private route: ActivatedRoute) { 
    
     this.uid=this.af.auth.currentUser.uid;
-    this.chatR = this.firebase.collection('chats', ref=>ref.orderBy('Timestamp')).valueChanges();
-    // console.log("me", this.uid)
+    this.chatRef = this.firebase.collection('chats', ref=>ref.orderBy('Timestamp')).valueChanges();
+   
 
 
     this.route.queryParams
     .subscribe(params => {
       this.displayName=params.displayName;
       this.sendto=params.userid;
-      // console.log("user "+ this.user);
+      console.log("user "+ this.sendto);
     });
   }
 
@@ -50,7 +50,7 @@ export class ProfilePicPage implements OnInit {
         Timestamp: Date.now(),
       });
       this.text="";
-      // console.log("mee2 " + this.af.auth.currentUser.uid)
+    
     }
   }
 

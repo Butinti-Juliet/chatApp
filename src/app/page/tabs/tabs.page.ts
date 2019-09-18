@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 // import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @Component({
@@ -8,11 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabsPage  {
 
-tab1: string = "MainPage";
-tab2: string = "ProfilePage";
-tab3: string = "ProfilePicPage";
 
-  constructor() { }
+  constructor() {
+   
+   }
 
   ngOnInit() {
   }

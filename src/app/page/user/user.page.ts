@@ -11,10 +11,11 @@ import { AngularFirestore } from '@angular/fire/firestore';
   styleUrls: ['./user.page.scss'],
 })
 export class UserPage implements OnInit {
-
-users;
+uid:any;
+users:any;
  constructor(public nav:NavController, public user:UserService,public af:AngularFireAuth,public firebase:AngularFirestore,private route: Router) {
        this.users=firebase.collection('users').valueChanges();
+       this.uid=af.auth.currentUser.uid;
  }
  ngOnInit() {
  }

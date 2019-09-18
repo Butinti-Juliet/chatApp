@@ -1,15 +1,16 @@
-<ion-header>
+<!-- <ion-header>
     <ion-header>
         <ion-toolbar color="dark">
             <ion-icon name="arrow-back" [routerLink]="['/tabs']"></ion-icon>
             <ion-title>Friends</ion-title>
         </ion-toolbar>
-    </ion-header>
+    </ion-header> -->
 
-    <ion-content class="background-image">
+<ion-content class="background-image">
+    <ion-list>
         <ion-list>
-            <ion-list>
-                <ion-item-sliding *ngFor="let key of users | async">
+            <ion-item-sliding *ngFor="let key of users | async">
+                <div *ngIf="key.uid != uid">
                     <ion-item>
                         <ion-avatar item-left>
                             <img src="{{key.photoURL}}">
@@ -18,12 +19,14 @@
                     </ion-item>
                     <ion-item-options slide="left">
                         <button ion-button color="primary" (click)="message(key)">
-                  <ion-icon name="person">
-                  </ion-icon>
-                  chat
-                </button>
+                              <ion-icon name="person">
+                              </ion-icon>
+                              chat
+                            </button>
                     </ion-item-options>
-                </ion-item-sliding>
-            </ion-list>
+                </div>
+
+            </ion-item-sliding>
         </ion-list>
-    </ion-content>
+    </ion-list>
+</ion-content>

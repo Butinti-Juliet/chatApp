@@ -1,6 +1,8 @@
 <ion-header>
     <ion-toolbar color="dark">
-        <ion-icon name="arrow-back" [routerLink]="['/tabs']"></ion-icon>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
         <ion-title>{{displayName}}</ion-title>
     </ion-toolbar>
 </ion-header>
@@ -8,10 +10,10 @@
 <ion-content class="background-image">
 
     <div class="chat" *ngFor="let chat of chatRef | async">
-        <div class="me" *ngIf="uid== chat.userid && chat.sentTo == sentto">
+        <div class="me" *ngIf="uid== chat.userid && chat.sendTo == sendto">
             {{chat.message}}
         </div>
-        <div class="you" *ngIf="chat.sentTo == uid && chat.userid == sentto">
+        <div class="you" *ngIf="chat.sendTo == uid && chat.userid == sendto">
             {{chat.message}}
         </div>
     </div>

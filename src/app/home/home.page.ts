@@ -18,7 +18,7 @@ export class HomePage {
    login(){
      this.af.auth.signInWithEmailAndPassword(this.email,this.password).then(()=>{
       //  this.nav.navigateRoot('main')
-      this.nav.navigateRoot('user')
+      this.nav.navigateRoot('tabs/user')
      }).catch(err=>{
        alert(err.message)
      })
