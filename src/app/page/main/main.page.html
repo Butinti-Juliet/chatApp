@@ -9,17 +9,25 @@
 
 <ion-content>
     <div class="ce">
+
+        <!-- <div padding text-center>
+            <img src="{{photoURL}}">
+            <input type="file" (change)="upload($event)" />
+        </div> -->
+
         <div class="chat" *ngFor="let chat of chatRef | async">
 
             <div class="me" *ngIf="uid==chat.UserID">
                 {{chat.Message}}
+                <img src="{{chat.photoURL}}">
             </div>
 
             <div class="you" *ngIf="uid != chat.UserID">
                 <span class="name">
       {{chat.Name}}
     </span><br> {{chat.Message}}
-                <!-- <label style="text-align: right; background-color: grey ;border-radius:6px 21px 6px"><small>{{chat.Timestamp | date : 'hh:mm' }}</small></label> -->
+                <img src="{{chat.photoURL}}">
+
             </div>
         </div>
     </div>
@@ -29,6 +37,7 @@
     <ion-item>
         <ion-input placeholder="Type Message....." [(ngModel)]="text"></ion-input>
         <ion-button (click)="send()" fill="clear" icon-only slot="end" color="dark">
+            <!-- <ion-icon name="attach"> </ion-icon>&nbsp; -->
             <ion-icon name="send"></ion-icon>
         </ion-button>
 

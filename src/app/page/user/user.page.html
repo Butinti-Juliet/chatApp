@@ -6,27 +6,29 @@
         </ion-toolbar>
     </ion-header> -->
 
-<ion-content class="background-image">
-    <ion-list>
+<ion-content>
+    <div class="cols">
         <ion-list>
-            <ion-item-sliding *ngFor="let key of users | async">
-                <div *ngIf="key.uid != uid">
-                    <ion-item>
-                        <ion-avatar item-left>
-                            <img src="{{key.photoURL}}">
-                        </ion-avatar> &nbsp;
-                        <h3>{{key.displayName}}</h3>
-                    </ion-item>
-                    <ion-item-options slide="left">
-                        <button ion-button color="primary" (click)="message(key)">
+            <ion-list>
+                <ion-item-sliding *ngFor="let key of users | async">
+                    <div *ngIf="key.uid != uid">
+                        <ion-item>
+                            <ion-avatar item-left>
+                                <img src="{{key.photoURL}}">
+                            </ion-avatar> &nbsp;
+                            <h3>{{key.displayName}}</h3>
+                        </ion-item>
+                        <ion-item-options slide="left">
+                            <button ion-button color="primary" (click)="message(key)">
                               <ion-icon name="person">
                               </ion-icon>
                               chat
                             </button>
-                    </ion-item-options>
-                </div>
+                        </ion-item-options>
+                    </div>
 
-            </ion-item-sliding>
+                </ion-item-sliding>
+            </ion-list>
         </ion-list>
-    </ion-list>
+    </div>
 </ion-content>

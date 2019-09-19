@@ -46,6 +46,7 @@ ion-title {
     float: right;
 }
 
-.background-image {
-    background-color: plum;
+.hideme {
+    display: none;
+    visibility: hidden;
 }

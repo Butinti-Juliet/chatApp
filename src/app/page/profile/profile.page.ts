@@ -102,4 +102,9 @@ Onpost(post:Post){
      })
    ).subscribe();
  }
+
+ async logout(){
+  await this.af.auth.signOut();
+  return this.router.navigate(['/']);
+}
 }

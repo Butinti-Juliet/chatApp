@@ -7,23 +7,44 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content class="background-image">
+<ion-content>
+    <div class="cols">
 
-    <div class="chat" *ngFor="let chat of chatRef | async">
-        <div class="me" *ngIf="uid== chat.userid && chat.sendTo == sendto">
-            {{chat.message}}
-        </div>
-        <div class="you" *ngIf="chat.sendTo == uid && chat.userid == sendto">
-            {{chat.message}}
+        <!-- <div padding text-center>
+            <img src="{{photoURL}}">
+            <input type="file" (change)="upload($event)" class="hideme" />
+        </div> -->
+
+        <div class="chat" *ngFor="let chat of chatRef | async">
+            <div class="me" *ngIf="uid== chat.userid && chat.sendTo == sendto">
+                {{chat.message}}
+                <img src="{{chat.photoURL}}">
+            </div>
+            <div class="you" *ngIf="chat.sendTo == uid && chat.userid == sendto">
+                {{chat.message}}
+                <img src="{{chat.photoURL}}">
+            </div>
         </div>
     </div>
-
 </ion-content>
 <ion-footer>
     <ion-item>
-        <ion-input placeholder="Type..." [(ngModel)]="text"></ion-input>
-        <ion-button (click)="send()" fill="clear" icon-only slot="end">
+        <ion-input placeholder="Type....." [(ngModel)]="text"></ion-input>
+        <ion-button (click)="send()" fill="clear" color="dark" icon-only slot="end">
             <ion-icon name="send"></ion-icon>
         </ion-button>
+        <ion-button (click)="takePhoto()" color="dark">
+            <ion-icon name="camera"></ion-icon>
+        </ion-button>
+
+        <ion-input type="file" (change)="upload($event)" class="hideme"></ion-input>
+        <!-- <ion-button color="dark"> -->
+        <ion-icon name="attach">
+            <div padding text-center>
+                <img src="{{photoURL}}">
+            </div>
+        </ion-icon>&nbsp;
+        <!-- </ion-button> -->
     </ion-item>
+
 </ion-footer>

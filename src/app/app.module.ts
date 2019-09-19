@@ -15,6 +15,9 @@ import { TabsPage } from './page/tabs/tabs.page';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { Camera } from '@ionic-native/camera/ngx';
+
+
 
 
 
@@ -40,6 +43,7 @@ const firebaseConfig = {
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,  HttpClientModule,  AngularFireStorageModule, AngularFireAuthModule, AngularFirestoreModule ,AngularFireModule.initializeApp(firebaseConfig), AngularFirestoreModule.enablePersistence() ],
   providers: [
     StatusBar,
+    Camera,
     SplashScreen,
   
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
