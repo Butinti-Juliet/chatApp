@@ -8,7 +8,11 @@
 <ion-content class="background-image">
 
     <ion-card class="card">
+
         <img src="{{photoURL}}"> <br><br>
+        <!-- <ion-button>
+            <ion-icon name="camera" (click)="takePhoto()" color="dark"></ion-icon>
+        </ion-button> -->
 
         <input type="file" (change)="upload($event)" accept=".png,.jpg" />
     </ion-card>

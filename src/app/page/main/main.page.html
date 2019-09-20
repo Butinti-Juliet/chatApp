@@ -37,10 +37,17 @@
     <ion-item>
         <ion-input placeholder="Type Message....." [(ngModel)]="text"></ion-input>
         <ion-button (click)="send()" fill="clear" icon-only slot="end" color="dark">
-            <!-- <ion-icon name="attach"> </ion-icon>&nbsp; -->
             <ion-icon name="send"></ion-icon>
         </ion-button>
 
+        <ion-button (click)="takePhoto()" color="dark">
+            <ion-icon name="camera"></ion-icon>
+        </ion-button>
+
+        <input style="display: none" type="file" (change)="upload($event)" #fileInput>
+
+        <ion-icon name="attach" (click)="fileInput.click()" color="dark">
+        </ion-icon>&nbsp;
 
 
     </ion-item>

@@ -12,7 +12,7 @@
 
         <!-- <div padding text-center>
             <img src="{{photoURL}}">
-            <input type="file" (change)="upload($event)" class="hideme" />
+            <input type="file" (change)="upload($event)" />
         </div> -->
 
         <div class="chat" *ngFor="let chat of chatRef | async">
@@ -28,8 +28,9 @@
     </div>
 </ion-content>
 <ion-footer>
+
     <ion-item>
-        <ion-input placeholder="Type....." [(ngModel)]="text"></ion-input>
+        <ion-input placeholder="Type Message....." [(ngModel)]="text"></ion-input>
         <ion-button (click)="send()" fill="clear" color="dark" icon-only slot="end">
             <ion-icon name="send"></ion-icon>
         </ion-button>
@@ -37,14 +38,11 @@
             <ion-icon name="camera"></ion-icon>
         </ion-button>
 
-        <ion-input type="file" (change)="upload($event)" class="hideme"></ion-input>
-        <!-- <ion-button color="dark"> -->
-        <ion-icon name="attach">
-            <div padding text-center>
-                <img src="{{photoURL}}">
-            </div>
+        <input style="display: none" type="file" (change)="upload($event)" #fileInput>
+
+        <ion-icon name="attach" (click)="fileI nput.click()" color="dark">
         </ion-icon>&nbsp;
-        <!-- </ion-button> -->
+
     </ion-item>
 
 </ion-footer>
