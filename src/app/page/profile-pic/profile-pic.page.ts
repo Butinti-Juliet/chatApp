@@ -6,6 +6,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import * as firebase from 'firebase';
 import { finalize } from 'rxjs/operators';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 
 
@@ -29,7 +30,7 @@ export class ProfilePicPage implements OnInit {
   id: any;
 
 
-  constructor(private storage: AngularFireStorage,private camera: Camera,private router: Router, private af: AngularFireAuth, private firebase: AngularFirestore, private route: ActivatedRoute) { 
+  constructor(private storage: AngularFireStorage,private camera: Camera,private SocialSharing: SocialSharing, private router: Router, private af: AngularFireAuth, private firebase: AngularFirestore, private route: ActivatedRoute) { 
    
     this.uid=this.af.auth.currentUser.uid;
     this.chatRef = this.firebase.collection('chats', ref=>ref.orderBy('Timestamp')).valueChanges();
@@ -99,6 +100,12 @@ export class ProfilePicPage implements OnInit {
   }, (err) => {
    // Handle error
   });
+}
+
+share(chat){
+  this.SocialSharing.share(chat.Message, chat.Image).then(()=>{
+  }).catch(()=>{
+  })
 }
 
   ngOnInit() {

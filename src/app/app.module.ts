@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { Camera } from '@ionic-native/camera/ngx';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 
 
@@ -44,6 +45,7 @@ const firebaseConfig = {
   providers: [
     StatusBar,
     Camera,
+    SocialSharing,
     SplashScreen,
   
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

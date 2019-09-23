@@ -16,13 +16,13 @@
         </div> -->
 
         <div class="chat" *ngFor="let chat of chatRef | async">
-            <div class="me" *ngIf="uid== chat.userid && chat.sendTo == sendto">
+            <div class="me" *ngIf="uid== chat.userid && chat.sendTo == sendto" (click)="share(chat)">
                 {{chat.message}}
-                <img src="{{chat.photoURL}}">
+                <img src="{{chat.photoURL}}" (click)="share(chat)">
             </div>
-            <div class="you" *ngIf="chat.sendTo == uid && chat.userid == sendto">
+            <div class="you" *ngIf="chat.sendTo == uid && chat.userid == sendto" (click)="share(chat)">
                 {{chat.message}}
-                <img src="{{chat.photoURL}}">
+                <img src="{{chat.photoURL}}" (click)="share(chat)">
             </div>
         </div>
     </div>
@@ -37,10 +37,13 @@
         <ion-button (click)="takePhoto()" color="dark">
             <ion-icon name="camera"></ion-icon>
         </ion-button>
+        <ion-button (click)="share(chat)" color="dark">
+            <ion-icon name="share-alt"></ion-icon>
+        </ion-button>
 
         <input style="display: none" type="file" (change)="upload($event)" #fileInput>
 
-        <ion-icon name="attach" (click)="fileI nput.click()" color="dark">
+        <ion-icon name="attach" (click)="fileInput.click()" color="dark">
         </ion-icon>&nbsp;
 
     </ion-item>
